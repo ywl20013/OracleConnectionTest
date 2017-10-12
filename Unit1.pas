@@ -61,10 +61,10 @@ begin
     ')(PORT=' + self.edtServerPort.Text + ')))(CONNECT_DATA=(SERVICE_NAME=' + self.edtServeIinstanceName.Text + ')))');
   FDConnection1.Params.Add('User_Name=' + edtUserName.Text);
   FDConnection1.Params.Add('Password=' + edtPassword.Text);
-  FDConnection1.Params.Add('CharacterSet=UTF8'); // ·ñÔòÖĞÎÄÂÒÂë
+  FDConnection1.Params.Add('CharacterSet=UTF8'); // å¦åˆ™ä¸­æ–‡ä¹±ç 
   try
     FDConnection1.Connected := True;
-    Application.MessageBox('³É¹¦µ½·şÎñÆ÷£¡', PChar(Caption), MB_OK + MB_ICONINFORMATION);
+    Application.MessageBox('æˆåŠŸåˆ°æœåŠ¡å™¨ï¼', PChar(Caption), MB_OK + MB_ICONINFORMATION);
   except
     on e: Exception do
     begin
