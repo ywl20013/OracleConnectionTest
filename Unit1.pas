@@ -17,7 +17,6 @@ type
     FDConnection1: TFDConnection;
     Button1: TButton;
     Label1: TLabel;
-    mmoConnectionString: TMemo;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     FDQuery1: TFDQuery;
@@ -25,10 +24,15 @@ type
     edtPassword: TEdit;
     Label2: TLabel;
     mmoSql: TMemo;
-    Label3: TLabel;
     Label4: TLabel;
     Button2: TButton;
     FDPhysOracleDriverLink1: TFDPhysOracleDriverLink;
+    Label3: TLabel;
+    edtServerIp: TEdit;
+    Label5: TLabel;
+    edtServeIinstanceName: TEdit;
+    Label6: TLabel;
+    edtServerPort: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -52,7 +56,9 @@ begin
     FDConnection1.Close;
   FDConnection1.Params.Clear;
   FDConnection1.Params.Add('DriverID=Ora');
-  FDConnection1.Params.Add('Database=' + self.mmoConnectionString.Text);
+  FDConnection1.Params.Add
+    ('Database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=' + self.edtServerIp.Text +
+    ')(PORT=' + self.edtServerPort.Text + ')))(CONNECT_DATA=(SERVICE_NAME=' + self.edtServeIinstanceName.Text + ')))');
   FDConnection1.Params.Add('User_Name=' + edtUserName.Text);
   FDConnection1.Params.Add('Password=' + edtPassword.Text);
   FDConnection1.Params.Add('CharacterSet=UTF8'); // ∑Ò‘Ú÷–Œƒ¬“¬Î
@@ -75,8 +81,11 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  edtUserName.Text := 'ldjx';
-  edtPassword.Text := 'ldjx';
+  edtUserName.Text := 'user name';
+  edtPassword.Text := 'password';
+  edtServerIp.Text := '127.0.0.1';
+  edtServerPort.Text := '1521';
+  edtServeIinstanceName.Text := 'orcl';
 end;
 
 end.
