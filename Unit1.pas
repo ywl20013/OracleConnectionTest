@@ -29,12 +29,9 @@ type
     Label4: TLabel;
     Button2: TButton;
     FDPhysOracleDriverLink1: TFDPhysOracleDriverLink;
-    Button3: TButton;
-    mmoCode: TMemo;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,22 +71,6 @@ procedure TForm1.Button2Click(Sender: TObject);
 begin
   FDQuery1.Close;
   FDQuery1.Open(self.mmoSql.Text);
-end;
-
-procedure TForm1.Button3Click(Sender: TObject);
-var
-  form: TForm;
-  memo: TMemo;
-  pnl: TPanel;
-  btn: TButton;
-begin
-  form := TForm.Create(Application);
-  memo := TMemo.Create(form);
-  memo.Parent := form;
-  memo.Align := alClient;
-  memo.Lines.Assign(self.mmoCode.Lines);
-  form.ShowModal;
-  form.Free;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
